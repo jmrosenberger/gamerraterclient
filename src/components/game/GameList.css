@@ -1,0 +1,18 @@
+.gameActions {
+    display: flex;
+    align-items: center;
+}
+
+.gameActions button{
+    height: fit-content;
+    margin-right: 1em;
+    border-radius: 5px;
+    background-color: lightgreen;
+    color: black;
+    font-size: 1em;
+    border: 2px solid green;
+}
+
+.sortGames {
+    margin-right: 1em;
+}
