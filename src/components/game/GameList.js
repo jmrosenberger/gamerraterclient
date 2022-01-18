@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import { getGames, getGamesByTerm, orderGames } from "./GameManager"
-// import "./GameList.css"
+import "./GameList.css"
 
 export const GameList = () => {
     const [games, setGames] = useState([])

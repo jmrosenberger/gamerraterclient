@@ -85,6 +85,14 @@ export const createRating = (newRating) => {
     })
 }
 
+export const getRatings = (gameId) => {
+    return fetch(`http://localhost:8000/ratings?gameId=${gameId}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("gr_token")}`
+        },
+    })
+        .then(res => res.json())
+}
 export const getReviews = (gameId) => {
     return fetch(`http://localhost:8000/reviews?gameId=${gameId}`, {
         headers: {

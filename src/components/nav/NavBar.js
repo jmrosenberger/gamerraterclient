@@ -10,7 +10,7 @@ export const NavBar = () => {
                 <Link className="nav-link" to="/games">Games</Link>
             </li>
             <li className="navbar__item">
-                Navigation link
+                <a href="mailto:jmrosenberger0811@yahoo.com">Email</a>
             </li>
             <li className="navbar__item">
                 Navigation link

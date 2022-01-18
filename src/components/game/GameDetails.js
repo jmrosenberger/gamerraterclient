@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import { createRating, getGame, getGameImages, getReviews, uploadGameImg } from "./GameManager";
-// import "./GameDetails.css"
+import { createRating, getRatings, getGame, getGameImages, getReviews, uploadGameImg } from "./GameManager";
+import "./GameDetails.css"
 
 export const GameDetails = () => {
     const { gameId } = useParams()
@@ -10,11 +10,13 @@ export const GameDetails = () => {
     const history = useHistory()
     const [gameImage, setImage] = useState("")
     const [gameImages, setGameImages] = useState([])
+    const [gameRating, setGameRating] = useState([])
 
     useEffect(() => {
         fetchGame()
         getReviews(gameId)
             .then(reviews => setReviews(reviews))
+        fetchRatings()
         getImages()
     }, [gameId])
 
@@ -24,6 +26,11 @@ export const GameDetails = () => {
     const fetchGame = () => {
         getGame(gameId)
             .then(game => setGame(game))
+        fetchRatings()
+    }
+
+    const fetchRatings = () => {
+        getRatings(gameId).then(data => setGameRating(data))
     }
 
     const oneToTen = () => {
@@ -87,7 +94,7 @@ export const GameDetails = () => {
                 Write a review</button>
         </p>
 
-        <h3>Rating: <b>{game?.average_rating}</b></h3>
+        <h3>Rating: <b>{gameRating.rating}</b></h3>
         <div>
             <label htmlFor="rating">Rate this game: </label>
             <select name="rating" defaultValue={0}
