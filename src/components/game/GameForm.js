@@ -11,7 +11,6 @@ export const GameForm = () => {
         categories: []
     })
 
-    console.log(currentGame)
     useEffect(() => {
         getCategories()
             .then(cats => setCategories(cats))
@@ -58,6 +57,7 @@ export const GameForm = () => {
         }
     }
 
+    console.log(currentGame)
 
     return (<>
 
@@ -90,21 +90,21 @@ export const GameForm = () => {
                 <div className="form-group">
                     <label htmlFor="yearReleased">Year Released: </label>
                     <input type="number" name="yearReleased" required className="form-control"
-                        value={currentGame.yearReleased}
+                        value={currentGame.year_released}
                         onChange={changeGameState}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="numPlayers">Number of Players: </label>
                     <input type="number" name="numPlayers" required className="form-control"
-                        value={currentGame.numPlayers}
+                        value={currentGame.num_players}
                         onChange={changeGameState}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="gameplayLength">Time to Play: </label>
                     <input type="number" name="gameplayLength" required className="form-control"
-                        value={currentGame.gameplayLength}
+                        value={currentGame.gameplay_length}
                         onChange={changeGameState}
                     />
                 </div>
@@ -122,10 +122,11 @@ export const GameForm = () => {
                     {
                         categories.map(category => {
                             return <>
-                                    <input type="checkbox" name="category" value={category.id} checked={
-                                        currentGame.categories.includes(category.id)}
+                                    <input type="checkbox" key={category.id} name="categories" value={category.id} 
+                                    checked={
+                                        currentGame?.categories?.includes(category.id)}
                                         onChange={changeGameState} />
-                                    <label htmlFor="category">{category.label}</label>
+                                    <label htmlFor="category" value={category.id}>{category.label}</label>
                             </>
                         })
                     }
